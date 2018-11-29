@@ -12,7 +12,13 @@ USTRUCT(BlueprintType)
 struct FDistData
 {
 	GENERATED_BODY()
-
-		
+	
+	/// Distance for seeing shady figure/license plate and lights but no colour from vehicle body
+	UPROPERTY(BlueprintReadWrite)
+		TArray<FVector> m_seeShad;
+	
+	/// Distance for seeing lights only
+	UPROPERTY(BlueprintReadWrite)
+		TArray<FVector> m_seeLight;
 
 };
