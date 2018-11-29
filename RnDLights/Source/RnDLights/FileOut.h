@@ -4,17 +4,21 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "CSVWriter.generated.h"
+#include "Runtime/Core/Public/Misc/FileHelper.h"
+#include "FileOut.generated.h"
+
 
 UCLASS()
-class RNDLIGHTS_API ACSVWriter : public AActor
+class RNDLIGHTS_API AFileOut : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ACSVWriter();
-
+	AFileOut();
+	UPROPERTY(BlueprintReadWrite)
+	FString m_input;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -23,6 +27,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintCallable)
+	void setInput();
+
+	UFUNCTION(BlueprintCallable)
+	void saveToCSV();
 	
 	
 };
