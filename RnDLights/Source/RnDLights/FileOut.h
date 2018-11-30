@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Runtime/Core/Public/Misc/FileHelper.h"
+#include "DistData.h"
 #include "FileOut.generated.h"
 
 
@@ -18,7 +19,8 @@ public:
 	AFileOut();
 	UPROPERTY(BlueprintReadWrite)
 	FString m_input;
-	
+	FString m_path;
+	FString m_fileName;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -28,7 +30,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
-	void setInput();
+	void setInput(const FDistData &_data);
 
 	UFUNCTION(BlueprintCallable)
 	void saveToCSV();
