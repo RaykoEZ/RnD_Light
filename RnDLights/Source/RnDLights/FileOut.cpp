@@ -30,6 +30,7 @@ void AFileOut::setInput(const FDistData &_data)
 		/// if file doesn't need to be appended, do the normal file initiation
 		if (!append)
 		{
+			UE_LOG(LogTemp, Warning, TEXT("CREATING NEW FILE"));
 			m_input += "Start of file:\n";
 			m_input += field0;
 			/// Insert for field 0
@@ -63,9 +64,12 @@ void AFileOut::setInput(const FDistData &_data)
 		}
 		else
 		{
-			/// This case is for if file already exists-----------------------------------------
-
 			
+			/// This case is for if file already exists-----------------------------------------
+			UE_LOG(LogTemp, Warning, TEXT("FILE ALREADY EXISTS, APPENDING..."));
+
+			///reset input string during the same session
+			m_input = "";
 			/// get offset for appending
 			int field0_offset = field0.Len();
 			int field1_offset = field1.Len();
