@@ -20,6 +20,7 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	FString m_input;
 	FString m_path;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FString m_fileName;
 protected:
 	// Called when the game starts or when spawned
