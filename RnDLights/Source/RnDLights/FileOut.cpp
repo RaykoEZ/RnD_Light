@@ -24,8 +24,8 @@ void AFileOut::setInput(const FDistData &_data)
 
 		auto size_0 = _data.m_seeShad.Num();
 		auto size_1 = _data.m_seeLight.Num();
-		FString field0 = "Silhouette and license plate seen:,";
-		FString field1 = "Only Tail-lights can be seen:,";
+		FString field0 = "1st Visual Change:,";
+		FString field1 = "2nd Visual Change:,";
 
 		/// if file doesn't need to be appended, do the normal file initiation
 		if (!append)
