@@ -41,5 +41,5 @@ public:
 	TArray<FVector2D> getRange();
 
 	UFUNCTION(BlueprintCallable)
-	int getLevel(const float &_dist);
+	int getLevel(const float &_dist, const float &_deltaDist);
 };

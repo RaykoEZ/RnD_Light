@@ -96,7 +96,7 @@ TArray<FVector2D> ADistLevelDetecter::getRange()
 	return m_LODs;
 }
 
-int ADistLevelDetecter::getLevel(const float & _dist)
+int ADistLevelDetecter::getLevel(const float & _dist, const float &_deltaDist)
 {
 	int ret = 0;
 	if(m_useSafe)
@@ -120,7 +120,15 @@ int ADistLevelDetecter::getLevel(const float & _dist)
 	}
 	else
 	{
-	
+		UE_LOG(LogTemp, Warning, TEXT("DeltaDist: %f"), _deltaDist);
+		if(_deltaDist >= 0.0f)
+		{
+			
+		}
+		else
+		{
+			
+		}
 	}
 	return ret;
 }
