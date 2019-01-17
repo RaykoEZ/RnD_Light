@@ -17,10 +17,10 @@ class RNDLIGHTS_API ADistLevelDetecter : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ADistLevelDetecter();
-	/// safe for using constant LOD distances, false for using bi-directional LOD distances
+	/// @brief safe for using constant LOD distances, false for using bi-directional LOD distances
 	UPROPERTY(EditAnywhere)
 	bool m_useSafe;
-	/// number of LOD levels
+	/// @brief number of LOD levels
 	UPROPERTY()
 	int m_numLevel;
 
@@ -28,28 +28,35 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	/// current LOD level
+	/// @brief current LOD level
 	UPROPERTY()
 	int m_currentLevel;
-	/// LOD distances for going away from the viewer
+	/// @brief LOD distances for going away from the viewer
 	UPROPERTY()
 	TArray<FVector2D> m_LOD;
-	/// LOD distances for going towards the viewer
+	/// @brief LOD distances for going towards the viewer
 	UPROPERTY()
 	TArray<FVector2D> m_LODOther;
-	/// generate LOD distances 
+	/// @brief Gets actual LOD distances
+	/// @param maximum distance of LOD0 for initialisation
+	/// @return distances for LOD ranges 
 	UFUNCTION()
 	TArray<FVector2D> initDist(const float _d0);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	/// initialise detector with d0 
+	/// @brief initialise detector with d0 
+	/// @param maximum distance of LOD0 for initialisation
 	UFUNCTION(BlueprintCallable)
 	void init(const float &_dist0);
-	/// Gets actual LOD distances
+	/// @brief  Gets actual LOD distances
+	/// @return LOD distances for one direction only
 	UFUNCTION(BlueprintCallable)
 	TArray<FVector2D> getRange();
-	/// called per tick, gets current LOD level
+	/// @brief called per tick, gets current LOD level
+	/// @param [in] _dist current distance from the viewer
+	/// @param [in] _deltaDist change in distance from last frame (direction)
+	/// @return current LOD level
 	UFUNCTION(BlueprintCallable)
 	int getLevel(const float &_dist, const float &_deltaDist);
 };
